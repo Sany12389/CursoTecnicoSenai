@@ -1,1 +1,714 @@
 Lógica de Programação
+
+* Atividade 1
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		Console.WriteLine("Informar a nota: ");
+		string texto = Console.ReadLine();
+		int nota =  int.Parse(texto);
+		
+		if (nota >=10)
+		{
+			Console.WriteLine("Aprovado");
+		}
+		
+		else if (nota >=5)
+		{
+			Console.WriteLine("Recuperação");
+		}
+		
+		else
+		{
+			Console.WriteLine("Reprovado");
+		}
+	}
+}
+
+* Atividade 2
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		Console.WriteLine("Informar a nota 1: ");
+		string texto1 = Console.ReadLine();
+		int nota1 =  int.Parse(texto1);
+		
+		Console.WriteLine("Informar a nota 2: ");
+		string texto2 = Console.ReadLine();
+		int nota2 =  int.Parse(texto2);
+		
+		Console.WriteLine("Informar a nota 3: ");
+		string texto3 = Console.ReadLine();
+		int nota3 =  int.Parse(texto3);
+		
+		Console.WriteLine("Informar a nota 4: ");
+		string texto4 = Console.ReadLine();
+		int nota4 =  int.Parse(texto4);
+		
+		double media = (nota1 + nota2 + nota3 + nota4) / 4.0;
+		Console.WriteLine("A media é: " + media );
+		if (media >=60)
+		{
+			Console.WriteLine("Aprovado");
+		}
+		
+		else if (media >=40)
+		{
+			Console.WriteLine("Recuperação");
+		}
+		
+		else
+		{
+			Console.WriteLine("Reprovado");
+		}
+	}
+}
+
+* Atividade 3
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+{
+		
+		Console.Write("Digite um número: ");
+		
+//Lê a entrada do usuário e tentar converter para um número inteiro
+	    if (int.TryParse(Console.ReadLine(), out int numero))
+	{
+//Verificar se o número é par ou ímpar
+		if (numero % 2 == 0)
+		{
+			Console.WriteLine($"O número {numero} é par");
+		}
+		else
+		{
+			Console.WriteLine($"O número {numero} é ímpar");
+		}
+}			
+else
+{
+//Informar que a entrada não é valida
+	        Console.WriteLine("Por favor, insira um número inteiro válido");
+}
+	}
+}
+
+Atividade 4
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		Console.WriteLine("Digite o salário bruto: ");
+		
+		if (decimal.TryParse(Console.ReadLine(), out decimal salariobruto))
+	{
+		decimal imposto;
+			
+		if (salariobruto <= 3000)
+		{
+			imposto = salariobruto * 0.10m;
+		}
+		else if (salariobruto <= 6000)
+		{
+			imposto = salariobruto * 0.15m;
+		}
+		else
+		{
+			imposto = salariobruto * 0.20m;
+		}
+		    Console.WriteLine($"O valor do imposto é {imposto}");
+		}
+else
+	  Console.WriteLine("Por favor, insira um número válido");
+		
+	}
+}
+
+* Atividade 5
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		Console.WriteLine("Digite a idade do usuário");
+		
+		if (decimal.TryParse(Console.ReadLine(), out decimal idade))
+	{
+		if (idade > 0 && idade <= 12)
+		{
+			Console.WriteLine("O usuário é uma criança");
+		}
+	    else if (idade >= 13 && idade <= 17)
+		{
+			Console.WriteLine("O usuário é um adolescente");
+		}
+		else if (idade >=18 && idade <= 64)
+		{
+			Console.WriteLine("O usuário é um adulto");
+		}
+		else
+		{
+			Console.WriteLine("O usuário é um idoso");
+		}	
+	}		
+			
+	}
+}
+
+* Atividade 6
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		Console.WriteLine("Digite o  1º número:");
+		if(double.TryParse(Console.ReadLine(), out double num1))
+	{
+		Console.WriteLine("Digite o 2º número:");
+        if (double.TryParse(Console.ReadLine(), out double num2))
+			
+		Console.Write("Qual a operação?");	
+		string operacao = Console.ReadLine();
+		
+		double resultado = 0;
+		bool operacaoValida = true;
+			
+		switch (operacao)
+		{
+			case "+":
+			    resultado = num1 + num2;
+				break;
+			case "-":
+				resultado = num1 - num2;
+			    break;
+			case "*":
+				resultado = num1 * num2;
+				break;
+			case "/":
+				if ( num2 != 0)
+			    resultado = num1 / num2;
+				else 
+					operacaoValida = false;
+		        break;
+			default:
+			   operacaoValida = false;
+		        break;
+		}
+			if (operacaoValida)
+				Console.WriteLine($"Resultado: (resultado)");
+			else
+				Console.WriteLine("Operação inválida ou divisão por zero");
+	}	
+	}
+}
+
+* Atividade 7
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		double dolar = 5.49,
+		       euro = 6.10,
+		       conversao = 0,
+		       libra = 7.14;
+		
+		Console.WriteLine("Digite o valor em reais:");
+		if(double.TryParse(Console.ReadLine(), out double valoremreal))
+	{
+		Console.WriteLine("Digite a moeda de conversão desejada: ");
+			string moedaconversao = Console.ReadLine();
+			switch (moedaconversao)
+		{
+			case "dolar":
+			 conversao = valoremreal / dolar;
+	           break;
+			 case "euro":
+			   conversao = valoremreal / euro;
+		        break;
+			  case "libra":
+				conversao = valoremreal / libra;
+			  break;
+		}
+		 Console.Write("A converção do real para essa moeda é: " + Math.Round(conversao,2));
+	}	
+		else
+		{
+		 Console.WriteLine("Valor inválido");
+		}	
+	}
+}
+
+* Atividade 8
+
+using System;
+
+class Program
+{
+	static void Main()
+	{
+		Random random = new Random();
+		int dezena;
+		int contador, contadorJogo, quantidadeDezenas;
+		decimal premio;
+		
+		Console.Write("Informar o valor do prêmio: ");
+		premio = decimal.Parse(Console.ReadLine());
+		
+		Console.Write("Informar o número de jogos: ");
+		int jogos = int.Parse(Console.ReadLine());
+		do
+		{
+			Console.Write("Informar a quantidade de dezenas: ");
+			quantidadeDezenas = int.Parse(Console.ReadLine());
+		}
+		while (quantidadeDezenas < 6 || quantidadeDezenas > 15);
+		Console.WriteLine(); // Iguall \n mesma coisa.
+		for (contadorJogo = 1; contadorJogo <= jogos; contadorJogo++)
+		{
+			for (contador = 1; contador <= quantidadeDezenas; contador++)
+			{
+				dezena = random.Next(1, 61);
+				// Responsável por tirar o "-" da última dezena
+				if (contador == quantidadeDezenas)
+					Console.Write($"{dezena:D2}\n"); // D2 igual 01 se D4 0001. \n igual enter.
+				// Responsável por acrescentar o sinal "-" entre as dezenas
+				else
+					Console.Write($"{dezena:D2}-");
+				{
+				} 
+			}
+		}
+		{
+			{
+				Console.WriteLine("Número inválido! Por favor, tente informar o número novamente.\n");
+			}
+		}
+				
+		{
+			decimal premio6Dezenas = premio * 0.75m;
+            decimal premio5Dezenas = premio * 0.15m;
+            decimal premio4Dezenas = premio * 0.10m;
+
+            Console.WriteLine($"\nGanhou do prêmio:");
+            Console.WriteLine($"75% para quem acertar 6 dezenas: R$ {premio:F2}");
+            Console.WriteLine($"15% para quem acertar 5 dezenas: R$ {premio:F2}");
+            Console.WriteLine($"10% para quem acertar 4 dezenas: R$ {premio:F2}");
+		
+		}
+	}
+}
+
+
+
+* Atividade 9
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Solicita e lê o peso
+        Console.Write("Digite o peso em quilogramas (kg): ");
+        string pesoInput = Console.ReadLine();
+        if (!double.TryParse(pesoInput, out double peso))
+        {
+            Console.WriteLine("Peso inválido. Por favor, insira um número válido.");
+            return;
+        }
+
+        // Solicita e lê a altura
+        Console.Write("Digite a altura em metros (m): ");
+        string alturaInput = Console.ReadLine();
+        if (!double.TryParse(alturaInput, out double altura))
+        {
+            Console.WriteLine("Altura inválida. Por favor, insira um número válido.");
+            return;
+        }
+
+        // Solicita e lê as condições de saúde
+        Console.WriteLine("Você possui algum dos problemas listados abaixo? (Digite 'sim' ou 'não' para cada condição)");
+        
+        Console.Write("Diabete: ");
+        bool temDiabete = Console.ReadLine().Trim().ToLower() == "sim";
+
+        Console.Write("Problemas nas articulações (Ex.: artrite): ");
+        bool temArticulacoes = Console.ReadLine().Trim().ToLower() == "sim";
+
+        Console.Write("Problema cardíacos: ");
+        bool temCardiacos = Console.ReadLine().Trim().ToLower() == "sim";
+
+        Console.Write("Obesidade: ");
+        bool temObesidade = Console.ReadLine().Trim().ToLower() == "sim";
+
+        Console.Write("Dores nas costas: ");
+        bool temDoresCostas = Console.ReadLine().Trim().ToLower() == "sim";
+
+        Console.Write("Ansiedade ou estresse: ");
+        bool temAnsiedade = Console.ReadLine().Trim().ToLower() == "sim";
+
+        // Fornece sugestões de exercícios com base nas condições de saúde
+        Console.WriteLine("\nSugestões de exercícios:");
+
+        if (temDiabete)
+        {
+            Console.WriteLine("- Caminhadas rápidas");
+            Console.WriteLine("- Natação");
+            Console.WriteLine("- Treinamento de resistência (com pesos leves a moderados)");
+            Console.WriteLine("- Exercícios aeróbicos de baixa intensidade");
+            Console.WriteLine("- Yoga (ajuda no controle do estresse e glicemia)");
+        }
+
+        if (temArticulacoes)
+        {
+            Console.WriteLine("- Natação (baixo impacto e excelente para articulações)");
+            Console.WriteLine("- Caminhadas suaves");
+            Console.WriteLine("- Yoga (com foco em posturas suaves e alongamento)");
+            Console.WriteLine("- Pilates (ajuda na força e flexibilidade com pouco impacto)");
+        }
+
+        if (temCardiacos)
+        {
+            Console.WriteLine("- Caminhadas leves");
+            Console.WriteLine("- Natação");
+            Console.WriteLine("- Exercícios aeróbicos de baixa intensidade");
+            Console.WriteLine("- Treinamento de resistência com acompanhamento médico");
+        }
+
+        if (temObesidade)
+        {
+            Console.WriteLine("- Caminhadas rápidas");
+            Console.WriteLine("- Natação");
+            Console.WriteLine("- Exercícios aeróbicos");
+            Console.WriteLine("- Treinamento de resistência (com supervisão para evitar lesões)");
+        }
+
+        if (temDoresCostas)
+        {
+            Console.WriteLine("- Yoga (com foco em alongamentos e fortalecimento da região lombar)");
+            Console.WriteLine("- Caminhadas suaves");
+            Console.WriteLine("- Natação");
+            Console.WriteLine("- Pilates");
+        }
+
+        if (temAnsiedade)
+        {
+            Console.WriteLine("- Yoga (ajuda a reduzir o estresse e ansiedade)");
+            Console.WriteLine("- Caminhadas ao ar livre");
+            Console.WriteLine("- Exercícios de respiração e meditação");
+            Console.WriteLine("- Natação");
+        }				
+    }
+}
+
+
+* Atividade 10
+
+using System;
+
+public class Program
+{
+	public static void Main()
+	{
+		Console.Write("Digite uma string: ");
+		string texto = Console.ReadLine();
+		Console.Write("Digite a letra que deseja contar: ");
+		char letra = Console.ReadLine()[0];
+		int contador = 0;
+		foreach (char c in texto)
+		{
+			if (c == letra)
+			{
+				contador++;
+			}
+		}
+
+		Console.Write("A letra " + letra + " aparece " + contador + " vez(es) na string. ");
+	}
+}
+
+* Atividade 11
+
+using System;
+
+public class Program
+{
+	public static void Main()
+	{
+		Random random = new Random();
+		int numeroSecreto = random.Next(1, 101);
+		int palpite = 0;
+		int tentativas = 0;
+		Console.WriteLine("Tente adivinhar o número entre 1 e 100!");
+		while (palpite != numeroSecreto)
+		{
+			Console.Write("Digite seu palpite: ");
+			string entrada = Console.ReadLine();
+			if (int.TryParse(entrada, out palpite))
+			{
+				tentativas++;
+				if (palpite < numeroSecreto)
+				{
+					Console.WriteLine("Muito baixo! Tente novamente.");
+				}
+
+				if (palpite > numeroSecreto)
+				{
+					Console.WriteLine("Muito alto! Tente novamente.");
+				}
+				else if (palpite == numeroSecreto)
+				{
+					Console.WriteLine($"Parabéns! Você adivinhou em {tentativas} tentativas.");
+				}
+			}
+			else
+			{
+				Console.WriteLine("Por favor, insira um número válido!");
+			}
+		}
+	}
+}
+
+* Atividade 12
+
+using System;
+
+public class Program
+{
+	public static void Main()
+	{
+		Console.WriteLine("Digite letra: ");
+		char letra = char.Parse(Console.ReadLine());
+		switch (letra)
+		{
+			case 'a':
+			case 'e':
+			case 'i':
+			case 'o':
+			case 'u':
+				Console.WriteLine("Vogal");
+				break;
+			default:
+				Console.WriteLine("Consoante");
+				break;
+		}
+	}
+}
+
+
+
+* Atividade 13
+
+using System;
+
+public class Program
+{
+	public static void Main()
+	{
+		Random numero = new Random(); // Random cria um gerador de números aletórios
+		int b; // Declara uma variável
+		//Fase 4: Solicitar o número de dezenas entre 6 e 15
+		do
+		{
+			Console.Write("Quantas dezenas terá seu jogo: "); // Solicita que o usuário insira o valor de dezenas
+			string a = Console.ReadLine(); // Para armazenar as dezenas
+			b = int.Parse(a); // Lê e converte a entrada do usuário para um número inteiro
+			if (b < 6 || b > 15) // Verifica se a quantidade inserida esta fora do intervalo permitido
+			{
+				Console.WriteLine("Número inválido. Por favor, informe um número entre 6 e 15."); // Solicita que o usuário insira uma dezena válida (entre 6 a 15)
+			}
+		}
+		while (b < 6 || b > 15);
+		
+		// Fase 3: Solicitar a quantidade de jogos
+		Console.Write("Quantos jogos serão: "); // Exibe no console o número de jogos e a quantidade de dezenas por jogo
+		string jogo = Console.ReadLine(); // Para armazenar as dezenas sorteadas para o jogo atual
+		int c = int.Parse(jogo); // variável
+		for (int k = 1; k <= c; k++)
+		{
+			Console.WriteLine("\n\nJogo de número " + k); // Informa qual jogo é
+			for (int i = 1; i <= b; i++) // Informa as dezenas
+			{
+				int valor = numero.Next(1, 60); // Gera número aleatório entre 1 e 60
+				if (i == b)
+					Console.Write($"{valor:D2}"); // Gera o ultimo número sem o - 
+				else
+					Console.Write($"{valor:D2}-"); // Gera os outros números com o - 
+			}
+		}
+
+		// Fase 6: Solicitar que o usuário informe o valor do prêmio
+		Console.Write("\nInforme o valor do prêmio: ");
+		double premio = double.Parse(Console.ReadLine());
+		
+		// Fase 7: Calcular e distribuir o prêmio
+		double premio6Dezenas = premio * 0.75; // Calcula 75% do prêmio total, que séra destinado ao ganhador que acertar 6 dezenas
+		double premio5Dezenas = premio * 0.15; // Calcula 15% do prêmio total, que séra destinado ao ganhador que acertar 5 dezenas
+		double premio4Dezenas = premio * 0.10; // Calcula 10% do prêmio total, que séra destinado ao ganhador que acertar 4 dezenas
+		Console.WriteLine($"\nDistribuição do prêmio:");
+		Console.WriteLine($"75% para quem acertar 6 dezenas: R$ {premio6Dezenas:F2}"); //Exibe o valor correspondente a 75% do prêmio
+		Console.WriteLine($"15% para quem acertar 5 dezenas: R$ {premio5Dezenas:F2}"); //Exibe o valor correspondente a 15% do prêmio
+		Console.WriteLine($"10% para quem acertar 4 dezenas: R$ {premio4Dezenas:F2}"); //Exibe o valor correspondente a 10% do prêmio
+	}
+}
+
+* Atividade 14
+
+programa {
+  funcao inicio() {
+    logico boiaa, boiab, boiac
+    logico valvulaligada = falso
+
+  escreva("Digite o estado da Boia A (verdadeiro = aberta, falso = fechada): ")
+  leia(boiaa)
+
+  escreva("Digite o estado da Boia B (verdadeiro = aberta, falso = fechada): ")
+  leia(boiab)
+  
+  escreva("Digite o estado da Boia C (verdadeiro = aberta, falso = fechada): ")
+  leia(boiac)
+
+  se (boiaa == falso e boiab == falso) {
+  escreva("Desligar a bomba\n")
+  escreva("Ligar válvula\n")
+    
+    } senao {
+  se (boiaa == verdadeiro) {
+  se (boiab == falso) {
+  se (boiac == falso) {
+  escreva("Ligar válvula\n")
+  escreva("Ligar bomba\n")
+  valvulaligada = verdadeiro
+  
+  } senao {
+  escreva("Ligar válvula\n")
+  escreva("Desligar bomba\n")
+  valvulaligada = verdadeiro
+  }
+  
+  } senao {
+  se (boiac == falso) {
+  escreva("Desligar válvula\n")
+  escreva("Ligar bomba\n")
+  valvulaligada = falso
+  
+  } senao {
+  escreva("Desligar válvula\n")
+  escreva("Desligar bomba\n")
+  valvulaligada = falso
+  }
+  }
+
+
+  }
+
+  se (valvulaligada == verdadeiro) {
+  escreva("A válvula está ligada\n")
+  
+  } senao {
+   escreva("Falha na válvula\n")
+    escreva("Falha na bomba\n")
+  }
+}
+  
+  }
+}
+
+* Atividade 15
+
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        Random numero = new Random(); // Cria um gerador de números aleatórios
+        int b; // Declara uma variável para armazenar a quantidade de dezenas
+        
+        // Fase 4: Solicitar o número de dezenas entre 6 e 15
+        do
+        {
+            Console.Write("Quantas dezenas terá seu jogo (entre 6 e 15): "); // Solicita que o usuário insira o valor de dezenas
+            string a = Console.ReadLine(); // Lê a entrada do usuário
+            
+            // Validação para garantir que a entrada é um número válido e dentro do intervalo
+            if (!int.TryParse(a, out b) || b < 6 || b > 15)
+            {
+                Console.WriteLine("Número inválido! Por favor, tente informar um número novamente entre 6 e 15."); // Mensagem de erro
+            }
+        } while (b < 6 || b > 15);
+
+        // Fase 3: Solicitar a quantidade de jogos
+        int c;
+        do
+        {
+            Console.Write("Quantos jogos serão: "); // Solicita a quantidade de jogos
+            string jogo = Console.ReadLine(); // Lê a entrada do usuário
+            
+            // Validação para garantir que a entrada é um número válido
+            if (!int.TryParse(jogo, out c) || c <= 0)
+            {
+                Console.WriteLine("Número inválido! Por favor, tente informar o número novamente."); // Mensagem de erro
+            }
+        } while (c <= 0);
+
+        // Geração dos jogos e números aleatórios
+        for (int k = 1; k <= c; k++)
+        {
+            Console.WriteLine($"\n\nJogo de número {k}:"); // Exibe o número do jogo
+            for (int i = 1; i <= b; i++) // Exibe as dezenas
+            {
+                int valor = numero.Next(1, 60); // Gera número aleatório entre 1 e 60
+                if (i == b)
+                    Console.Write($"{valor:D2}"); // Exibe o último número sem o "-"
+                else
+                    Console.Write($"{valor:D2}-"); // Exibe os outros números com o "-"
+            }
+        }
+
+        // Fase 6: Solicitar que o usuário informe o valor do prêmio
+        double premio;
+        do
+        {
+            Console.Write("\n\nInforme o valor do prêmio: "); // Solicita o valor do prêmio
+            string premioStr = Console.ReadLine(); // Lê a entrada do usuário
+            
+            // Validação para garantir que a entrada é um número válido
+            if (!double.TryParse(premioStr, out premio) || premio <= 0)
+            {
+                Console.WriteLine("Número inválido! Por favor, tente informar o número novamente."); // Mensagem de erro
+            }
+        } while (premio <= 0);
+
+        // Fase 7: Calcular e distribuir o prêmio
+        double premio6Dezenas = premio * 0.75; // Calcula 75% do prêmio total
+        double premio5Dezenas = premio * 0.15; // Calcula 15% do prêmio total
+        double premio4Dezenas = premio * 0.10; // Calcula 10% do prêmio total
+        
+        Console.WriteLine($"\nDistribuição do prêmio:");
+        Console.WriteLine($"75% para quem acertar 6 dezenas: R$ {premio6Dezenas:F2}"); // Exibe o valor correspondente a 75% do prêmio
+        Console.WriteLine($"15% para quem acertar 5 dezenas: R$ {premio5Dezenas:F2}"); // Exibe o valor correspondente a 15% do prêmio
+        Console.WriteLine($"10% para quem acertar 4 dezenas: R$ {premio4Dezenas:F2}"); // Exibe o valor correspondente a 10% do prêmio
+    }
+}
